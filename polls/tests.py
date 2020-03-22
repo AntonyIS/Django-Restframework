@@ -28,7 +28,7 @@ class TestPoll(APITestCase):
 	@staticmethod
 	def setup_user():
 		User = get_user_model()
-		return User.objects.create_user('test',email = 'testuser@test.com',password = 'test')
+		return User.objects.create_user('admin',email = 'admin@gmail.com',password = 'pass1234')
 
 
 	def test_list(self):
@@ -40,7 +40,7 @@ class TestPoll(APITestCase):
 	def test_create(self):
 		# username = input("Enter Username: ")
 		# password = input("Enter Password: ")
-		self.client.login(username=self.username, password=self.password)	
+		self.client.login(username='admin', password='pass1234')	
 		params = {"question":"Win over Covid 19","created_by": 1}
 		response = self.client.post(self.uri, params)
-		self.assertEqual(response.status_code, 200, "Expected Response code 200, received {0} instead".format(response.status_code))
+		self.assertEqual(response.status_code, 201, "Expected Response code 200, received {0} instead".format(response.status_code))
