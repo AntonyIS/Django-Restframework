@@ -32,7 +32,7 @@ jobs:
             name: run tests
             command: |
               . venv/bin/activate
-              cd PollsApi
+              
               python manage.py test
 
         - store_artifacts:
