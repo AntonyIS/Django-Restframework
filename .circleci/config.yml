@@ -13,7 +13,7 @@ jobs:
         # Download and cache dependencies
         - restore_cache:
             keys:
-            - v1-dependencies-{{ checksum "PollsApi/requirements.txt" }}
+            - v1-dependencies-{{ checksum "pollsapi/requirements.txt" }}
           # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
         - run:
@@ -21,8 +21,7 @@ jobs:
             command: |
               python3 -m venv venv
               . venv/bin/activate
-              cd PollsApi
-              pip install -r requirements.txt
+              pip install -r pollsapi/requirements.txt
 
         - save_cache:
             paths:
@@ -33,7 +32,7 @@ jobs:
             name: run tests
             command: |
               . venv/bin/activate
-              cd PollsApi
+              cd pollsapi
               python manage.py test
 
         - store_artifacts:
