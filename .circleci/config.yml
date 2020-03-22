@@ -21,7 +21,7 @@ jobs:
             command: |
               python3 -m venv venv
               . venv/bin/activate
-              pip install -r requirements.txt
+              pip install -r PollsApi/requirements.txt
 
         - save_cache:
             paths:
@@ -33,7 +33,7 @@ jobs:
             command: |
               . venv/bin/activate
               cd PollsApi
-              python manage.py tests
+              python manage.py test
 
         - store_artifacts:
             path: test-reports
