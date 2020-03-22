@@ -10,9 +10,10 @@ jobs:
       - checkout
     # Download and cache dependencies
       - restore_cache:
-        keys:- v1-dependencies-{{ checksum "PollsApi/requirements.txt" }}
+        keys:
+          - v1-dependencies-{{ checksum "PollsApi/requirements.txt" }}
         # fallback to using the latest cache if no exact match is found
-        - v1-dependencies-
+          - v1-dependencies-
       - run:
         name: install dependencies
         command: |
@@ -31,7 +32,7 @@ jobs:
           . venv/bin/activate
           cd PollsApi
           python manage.py test
-          
+
       - store_artifacts:
         path: test-reports
         destination: test-reports
