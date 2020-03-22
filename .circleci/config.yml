@@ -13,7 +13,7 @@ jobs:
         # Download and cache dependencies
         - restore_cache:
             keys:
-            - v1-dependencies-{{ checksum "requirements.txt" }}
+            - v1-dependencies-{{ checksum "PollsApi/requirements.txt" }}
           # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
         - run:
@@ -21,7 +21,8 @@ jobs:
             command: |
               python3 -m venv venv
               . venv/bin/activate
-              pip install -r PollsApi/requirements.txt
+              cd PollsApi
+              pip install -r requirements.txt
 
         - save_cache:
             paths:
